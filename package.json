@@ -1,0 +1,32 @@
+{
+	"name": "arm-flashcards",
+	"version": "0.1.0",
+	"description": "Flashcard style game",
+	"main": "index.html",
+	"type": "module",
+	"scripts": {
+		"build": "echo 'TODO: perform build.'",
+		"pretest:watch": "echo 'TODO: start server in pretest:watch...'",
+		"test:watch": "cypress open",
+		"test": "cypress run --ci-build-id $BRANCH_NAME",
+		"start": "node ./test-server.mjs"
+	},
+	"keywords": [
+		"flashcards",
+		"learning",
+		"game"
+	],
+	"author": "Rahman Malik",
+	"license": "MIT",
+	"dependencies": {
+		"@coreui/icons": "^1.0.1",
+		"chart.js": "^2.9.3",
+		"deep-keys": "^0.5.0",
+		"cypress": "^4.8.0"
+	},
+	"devDependencies": {},
+	"defaultConfig": {
+		"TEST_SERVER_PORT": 8090,
+		"TEST_SERVER_ADDR": "0.0.0.0"
+	}
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html><html><head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Glossary Flashcards</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+	<link rel="manifest" href="/favicon/site.webmanifest">
+</head><body>
+	<h1><span id="title">Lean</span> Glossary</h1>
+	<header></header>
+
+	<section id="main" class="content">
+		<!-- content should be populated based on router element? -->
+	</section>
+
+	<footer id="footer" class="template--section section--footer">
+		<span id="footerCopyright"><!-- content will be populated by JS --></span>
+	</footer>
+
+	<script type="module">
+		// Javascript here...
+	</script>
+
+	<script type="module">
+		document
+			.getElementById("footerCopyright")
+			.innerHTML = `©${new Date().getFullYear()} by Rahman Malik`;
+
+		// For some reason, SVGs don't seem to load (at least from shadow DOM)
+		// without removing and adding their href attribute....
+		document
+			.body
+			.querySelectorAll(".coreui--icon__svg > use")
+			.forEach(removeAndAddCoreuiAttrs);
+
+		function removeAndAddCoreuiAttrs (el) {
+			const href = el.getAttribute("href");
+			el.setAttribute("href", "");
+			el.setAttribute("href", href);
+		}
+	</script>
+	<!-- Please use cil- prefix for linear icons, cib- prefix for brand icons, and cif- prefix for flag icons. -->
+	<!-- interesting icons
+	arrow-thick-to-bottom (use for download)
+	ban
+	bell-exclamation
+	buffer
+	chat-bubble
+	check-circle
+	clear-all
+	clone
+	cloud-download
+	cloud-upload
+	clipboard
+	comment-square
+	comment-bubble
+	columns
+	copy
+	data-transfer-up
+	data-transfer-down
+	devices
+	double-quote-sans-left
+	double-quote-sans-right
+	drop
+	envelope-open
+	ethernet
+	exit-to-app
+	external-link
+	filter
+	file
+	fullscreen
+	fullscreen-exit
+	github
+	hand-point- (up, down, left, right)
+	home
+	https
+	image-plus <<-- good
+	info
+	library-add <<-- great
+	menu
+	minus
+	people
+	plus
+	save
+	search
+	settings
+	toggle-off / on
+	trash <<-- yes
+	user
+	user- (x, plus, unfollow, follow)
+	view- (column, quilt, stream, module)
+	warning
+	-->
+</body></html>

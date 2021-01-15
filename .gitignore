@@ -1,0 +1,8 @@
+node_modules/
+*.tmp
+*.swp
+*.swo
+.metadata_never_index
+.DS_Store
+hardir/
+*.zip
