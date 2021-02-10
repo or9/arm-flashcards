@@ -1,25 +1,134 @@
 <!DOCTYPE html><html><head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Glossary Flashcards</title>
+	<title>Flashcards</title>
+	<style type="text/css">
+		body {
+			font: 16px/24px regular Helvetica, Arial, sans-serif;
+			color: #333;
+			padding: 10px; margin: 0; position: relative;
+		}
+		header {
+			display: flex;
+			align-content: space-around;
+		}
+		h1 {
+			font-weight: lighter;
+			color: #333;
+			display: inline-flex;
+			flex: 1 1 auto;
+			margin: 0;
+		}
+		header > a {
+			display: inline-flex;
+			flex: 0 1 auto;
+			margin: 0 0 0 10px;
+		}
+		.nodisplay {
+			display: none !important;
+		}
+	</style>
 	<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
 	<link rel="manifest" href="/favicon/site.webmanifest">
+	<script type="module" src="./custom-elements/arm-dropzone.element.mjs"></script>
+	<script type="module" src="./custom-elements/arm-game.element.mjs"></script>
 </head><body>
-	<h1><span id="title">Lean</span> Glossary</h1>
-	<header></header>
+	<header>
+		<h1>Flashcards</h1>
+		<a href="https://github.com/or9/arm-flashcards">Source</a>
+		<a href="#">Not sure what goes here</a>
+	</header>
+	<nav>
+		<a href="#/play">Play</a>
+		<a href="#/create">Create</a>
+	</nav>
 
-	<section id="main" class="content">
+	<section id="page_play" class="content router-page">
 		<!-- content should be populated based on router element? -->
+		<!-- <div class="flex-content--top">
+			<span id="cardsCompleted"></span>/<span id="cardsRemaining"></span>
+		</div> -->
+		<arm-game>
+		</arm-game>
+		<!-- <div class="flex-content--left"> -->
+			<!--
+				Dispaly one item from a randomly sorted list.
+				Once answered correctly, remove that item from the list.
+				If wrong answer, move on to next card? (Hard mode?)
+
+				How many options to display? Configurable? Default 6? 4?
+				Number of options is score multiplier?
+				Time counts down after card is displayed.
+				Multiply add countdown time to score. Time is seconds. Scales with options. Linear?
+				Can upload score to leaderboard, or compare to local scores....
+			-->
+		<!-- </div> -->
+		<!-- <div class="flex-content--right"></div> -->
+	</section>
+
+	<section id="page_create" class="content router-page">
 	</section>
 
 	<footer id="footer" class="template--section section--footer">
-		<span id="footerCopyright"><!-- content will be populated by JS --></span>
+		<span id="footerCopyright"><!-- this content will be populated by JS --></span>
 	</footer>
+	<script type="module">
+		const initialPage = "page_play";
+		const startingHashSlashRegExp = /^(#\/)?/;
+		const pages = Array.from(document.querySelectorAll(`.router-page`));
+
+		if (!window.location.hash) {
+			showPage(initialPage);
+		}
+
+		pages
+			.filter(el => el.id !== `page_${window.location.hash.replace(startingHashSlashRegExp, "")}`)
+			.forEach(el => void el.classList.add("nodisplay"));
+
+		window.addEventListener("hashchange", windowHashChanged, false);
+
+		function windowHashChanged(event) {
+			changePage(event.oldURL, event.newURL);
+		}
+
+		function changePage(oldUrl, newUrl) {
+			// Hide previously displayed page
+			const oldPageId = getHash(oldUrl);
+			hidePage(oldPageId);
+
+			// Show relevant content
+			const newPageId = getHash(newUrl);
+			showPage(newPageId);
+		}
+
+		function hidePage (id) {
+			return void document
+				.querySelector(`#page_${id}`)
+				.classList
+				.add("nodisplay");
+		}
+
+		function showPage(id) {
+			return void document
+				.querySelector(`#page_${id}`)
+				.classList
+				.remove("nodisplay");
+		}
+
+		function getHash(url) {
+			const hash = new URL(url).hash;
+			console.log("~getHash hash: ", hash);
+			return hash.replace(startingHashSlashRegExp, "");
+		}
+	</script>
 
 	<script type="module">
-		// Javascript here...
+		if (window.location.host.startsWith(`localhost`)) {
+			// do or do not do something...?
+			// Actually, I just don't remember.
+		}
 	</script>
 
 	<script type="module">
