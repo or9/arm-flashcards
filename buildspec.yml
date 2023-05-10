@@ -1,0 +1,11 @@
+version: 0.2         
+phases:
+  build:
+    commands:
+      - mkdir -p dist
+      - cp package.json dist/
+      - cp *.js dist/
+artifacts:
+  files:
+    - 'dist/**/*'
+  name: or9-flashcards-$(date +%Y-%m-%d) 
