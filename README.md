@@ -1,5 +1,5 @@
 # Flashcards  
-Client-side flashcards app.  Test docs change. Test 2
+Client-side flashcards app.  Test docs change. Test 2. test 3
 
 ## Development  
 The main application functionality is entirely client-side. The backend only needs to serve the correct files when requested. For this, there is a basic server `test-server.mjs` which serves static files. If running locally, either start this server, or use another server such as `python -m http.server` (does not serve `.mjs` files correctly) or the Google Chrome app `Web Server for Chrome`.  
