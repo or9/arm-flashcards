@@ -8,4 +8,4 @@ phases:
 artifacts:
   files:
     - 'dist/**/*'
-  name: or9-flashcards-$(date +%Y-%m-%d).zip
+  #name: or9-flashcards-$(date +%Y-%m-%d).zip
